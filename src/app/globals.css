@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f7f5f2;
+  --white: #ffffff;
+  --border: #e2ddd8;
+  --border-light: #ede9e4;
+  --teal: #2d7d6f;
+  --teal-light: rgba(45, 125, 111, 0.1);
+  --teal-mid: rgba(45, 125, 111, 0.2);
+  --flood-red: rgba(198, 40, 40, 0.92);
+  --water-blue: rgba(21, 101, 192, 0.88);
+  --text: #1a1a1a;
+  --text-2: #4a4a4a;
+  --text-3: #8a8a8a;
+  --text-4: #b8b8b8;
+}
+
+html, body, #__next {
+  height: 100%;
+}
+
+/* Desaturate OSM basemap tiles slightly so data layers pop */
+.leaflet-tile-pane {
+  filter: saturate(0.5) brightness(1.05);
+}
+
+/* Data overlays render at full vivid color */
+.leaflet-overlay-pane,
+.leaflet-marker-pane,
+.leaflet-popup-pane {
+  filter: saturate(2.5) brightness(1.05) contrast(1.1);
+}
+
+/* Leaflet popup dark theme overrides */
+.leaflet-popup-content-wrapper {
+  background: var(--white) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1) !important;
+}
+.leaflet-popup-tip { background: var(--white) !important; }
+.leaflet-popup-content {
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 12px !important;
+  line-height: 1.6 !important;
+  color: var(--text) !important;
+  margin: 12px 14px !important;
+}
+.leaflet-control-attribution {
+  background: rgba(247, 245, 242, 0.85) !important;
+  color: var(--text-3) !important;
+  font-size: 9px !important;
+  backdrop-filter: blur(4px);
+}
+.leaflet-bar a {
+  background: var(--white) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+.leaflet-bar a:hover { background: var(--bg) !important; }
+
+/* Popup content */
+.popup-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--teal);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.popup-row {
+  font-size: 11px;
+  color: var(--text-2);
+  margin-bottom: 3px;
+  display: flex;
+  gap: 6px;
+}
+.popup-row b { color: var(--text); font-weight: 500; min-width: 65px; }
+.popup-filename {
+  margin-top: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: var(--text-3);
+  word-break: break-all;
+  line-height: 1.5;
+  border-top: 1px solid var(--border-light);
+  padding-top: 6px;
+}
+.popup-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 8px;
+  padding: 5px 10px;
+  background: var(--teal-light);
+  border: 1px solid var(--teal-mid);
+  border-radius: 5px;
+  color: var(--teal);
+  font-size: 11px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.popup-download:hover { background: var(--teal-mid); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
