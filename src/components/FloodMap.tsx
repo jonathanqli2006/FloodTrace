@@ -241,7 +241,7 @@ export default function FloodMap({ scenes, selectedDate, onStatusChange, onProgr
   useEffect(() => {
     if (mapRef.current || !mapDivRef.current) return;
     // Guard against React strict mode double-invoke
-    if (mapDivRef.current._leaflet_id) return;
+    if ((mapDivRef.current as any)._leaflet_id) return;
 
     const loadScripts = async () => {
       const loadScript = (src: string) =>
